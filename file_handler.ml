@@ -51,7 +51,7 @@ let mkmsg ~service ~obj ~interface ~member ~args =
 	m
 
 let get_language cb = 
-  let m = mkmsg ~service:"com.citrix.xenclient.xenmgr" ~obj:"/" ~interface:"org.freedesktop.DBus.Properties" ~member:"Get" ~args:[ DBus.String "com.citrix.xenclient.xenmgr.config"; DBus.String "language" ] in
+  let m = mkmsg ~service:"com.citrix.xenclient.xenmgr" ~obj:"/" ~interface:"org.freedesktop.DBus.Properties" ~member:"Get" ~args:[ DBus.String "com.citrix.xenclient.xenmgr.config.ui"; DBus.String "language" ] in
     Dbus_interface.send_request m (fun resp ->
 				     match DBus.Message.get resp with
 				       | [ DBus.Variant (DBus.String out_1) ] -> cb out_1
